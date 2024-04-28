@@ -1,20 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+/*Initialisation file for expo, loads navigational dependencies then redirects 
+to Home.js on start up */
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { SplashScreen } from "./src/screens/SplashScreen";
+import { Home } from "./src/screens/Home";
 
-export default function App() {
+
+const Stack = createStackNavigator();
+export default function App() { 
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+  <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen name="SplashScreen" 
+      component={SplashScreen} 
+      options={{headerShown: false}}/>
+      <Stack.Screen name="Home" component={Home} />
+    </Stack.Navigator>
+  </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
