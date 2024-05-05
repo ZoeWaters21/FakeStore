@@ -1,12 +1,17 @@
 import { StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export const CategoryButton = (categoryName) => {
-  
+  const navigation = useNavigation()
+  categoryName = categoryName.categoryName
+  const selectCategory = () =>{
+    navigation.navigate("ProductList", {categoryName: categoryName})
+  }
 return(
     <View style = {styles.container}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={selectCategory}>
             <View style={styles.ButtonStyle}>
-                <Text style= {styles.textStyle}>{categoryName.categoryName}</Text>
+                <Text style= {styles.textStyle}>{categoryName}</Text>
             </View>
         </TouchableOpacity>
     </View>

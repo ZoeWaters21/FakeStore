@@ -5,3 +5,8 @@ export const CapitalizeFirstLetterEveryWord = (data) => {
    }
    return splitWord.join(' '); 
 }
+
+export const URLEncoder = (data) => {
+    const lowerWord = data.toLowerCase();
+    return lowerWord.split(' ').join('%20');
+}

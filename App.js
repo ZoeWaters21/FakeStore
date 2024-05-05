@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { SplashScreen } from "./src/screens/SplashScreen";
 import { Home } from "./src/screens/Home";
+import { ProductList } from "./src/screens/ProductList";
 
 
 const Stack = createStackNavigator();
@@ -16,6 +17,9 @@ export default function App() {
         options={{headerShown: false}}/>
       <Stack.Screen name="Home"
         component={Home}
+        options={{headerShown: false}} />
+        <Stack.Screen name="ProductList"
+        component={ProductList}
         options={{headerShown: false}} />
     </Stack.Navigator>
   </NavigationContainer>

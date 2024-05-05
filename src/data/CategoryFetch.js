@@ -1,25 +1,33 @@
   import { CapitalizeFirstLetterEveryWord } from "../components/Regex";
-
-data = []
+  
+categoryData = []
 
   const getCategoriesFromAPI = async () => {
     try {
+      const baseURL = 'https://fakestoreapi.com/products/categories'
       const fetchData = await fetch(
-        'https://fakestoreapi.com/products/categories',
+        baseURL
       );
       const rawData = await fetchData.json();
-      console.log(await rawData)
-      captialiseData(rawData)
+      console.log(await "Rawdata from getCategoriesFromAPI returns: ", rawData)
+      return await rawData
     } catch (error) {
       console.error(error);
     }
   };
 
   const captialiseData = (rawData) => {
-    rawData.forEach((i) => data.push(CapitalizeFirstLetterEveryWord(i)))
+    console.log("Captialising function received: ", rawData)
+    rawData.forEach((i) => categoryData.push(CapitalizeFirstLetterEveryWord(i)))
+    console.log("Capitalising function returning: ", categoryData)
     }
+  
 export default async function returnCategories(){
-    await getCategoriesFromAPI()
-    console.log(await "returnCategory returning: ", data)
-    return data
+    captialiseData(await getCategoriesFromAPI())
+    console.log("returnCategory returning: ", categoryData)
+    return categoryData
+}
+
+export const ClearData = () =>{
+  categoryData = []
 }

@@ -4,7 +4,7 @@ import { StyleSheet, View} from 'react-native';
 import React, {useState, useEffect} from "react"
 import PageHeader from '../components/PageHeader';
 import { pageTitles } from '../data/Constants';
-import returnCategories from '../data/CategoryFetch';
+import returnCategories, {ClearData} from '../data/CategoryFetch';
 import {LoadingIndicator} from '../components/LoadingIndicator'
 import {CategoryList} from '../components/lists/CategoryList'
 
@@ -24,7 +24,8 @@ export const Home = () => {
       } finally {
         setTimeout(() => {
           setLoading(false)
-       }, 2000)
+          ClearData()
+       }, 500)
       }
     }
 
