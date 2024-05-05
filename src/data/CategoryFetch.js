@@ -1,6 +1,6 @@
   import { CapitalizeFirstLetterEveryWord } from "../components/Regex";
   
-categoryData = []
+let categoryData = []
 
   const getCategoriesFromAPI = async () => {
     try {
@@ -9,7 +9,7 @@ categoryData = []
         baseURL
       );
       const rawData = await fetchData.json();
-      console.log(await "Rawdata from getCategoriesFromAPI returns: ", rawData)
+      //console.log(await "Rawdata from getCategoriesFromAPI returns: ", rawData)
       return await rawData
     } catch (error) {
       console.error(error);
@@ -17,14 +17,14 @@ categoryData = []
   };
 
   const captialiseData = (rawData) => {
-    console.log("Captialising function received: ", rawData)
+    //console.log("Captialising function received: ", rawData)
     rawData.forEach((i) => categoryData.push(CapitalizeFirstLetterEveryWord(i)))
-    console.log("Capitalising function returning: ", categoryData)
+    //console.log("Capitalising function returning: ", categoryData)
     }
   
 export default async function returnCategories(){
     captialiseData(await getCategoriesFromAPI())
-    console.log("returnCategory returning: ", categoryData)
+    //console.log("returnCategory returning: ", categoryData)
     return categoryData
 }
 

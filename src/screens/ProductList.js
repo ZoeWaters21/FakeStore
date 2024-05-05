@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text} from 'react-native';
+import { StyleSheet, View} from 'react-native';
 import React, {useState, useEffect} from "react"
 import PageHeader from '../components/PageHeader';
 import returnProductList from '../data/ProductFetch';
@@ -8,11 +8,11 @@ import { PreviousPageButton } from "../components/buttons/PreviousScreen"
 
 
 //This function calls functions located in other script files to display elements on the page.
-export const ProductList = ({navigation, route}) => {
+export const ProductList = ({route}) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true) 
   const category = route.params.categoryName
-  console.log("the route value is: ", route.params.categoryName, category)
+  //console.log("the route value is: ", route.params.categoryName, category)
   useEffect(() => {
     async function getData(){
       try{

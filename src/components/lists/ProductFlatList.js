@@ -6,8 +6,7 @@ import { ProductButton } from '../buttons/ProductButtons';
 /* this function takes the data from the database, displays it on the screen, the keyExtractor is
 in there in case it may be needed later, currently doesnt do anything */
 export const ProductFlatList = (data) => {
-    //data = data.data
-    console.table("ProductList(data): ", data.data)
+    //console.table("ProductList(data): ", data.data)
 return (
     <View style={styles.container}>
         <FlatList

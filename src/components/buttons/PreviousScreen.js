@@ -1,39 +1,29 @@
-import { StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import { View, Text, TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/AntDesign';
+import { largeButtonStyle, smallButtonStyle } from '../../StyleSheets/PreviousScreenButton'
+import React, {useState, useEffect} from "react"
 
-export const PreviousPageButton = () =>{
+export const PreviousPageButton = (changeSize) =>{
+    //console.log(changeSize)
+    const [size, setSize] = useState(true);
     const navigation = useNavigation()
     const navigateToPreviousScreen = () =>{
         navigation.pop()
       }
+      useEffect(() => {
+        if (changeSize.changeSize == "changeSize"){
+            setSize(false)
+          }}   
+      ,[])
+    
+      
 
       return(
-        <View style = {styles.container}>
-                <TouchableOpacity style = {styles.buttonStyle} onPress={navigateToPreviousScreen}>
-                <Icon name="leftcircle" size={30} color="white" />
-                <Text style = {styles.textStyle}>Back</Text>
+        <View style = {size ? largeButtonStyle.container: smallButtonStyle.container}>
+                <TouchableOpacity style = {size ? largeButtonStyle.buttonStyle: smallButtonStyle.buttonStyle} onPress={navigateToPreviousScreen}>
+                <Icon name="leftcircle" size={size ? 30:20} color="white" />
+                <Text style = {size ? largeButtonStyle.textStyle: smallButtonStyle.textStyle}>Back</Text>
             </TouchableOpacity>
         </View>
     )}
-    const styles = StyleSheet.create({
-        container: {
-          flex: 2,
-          backgroundColor: '#030637',
-        },
-        buttonStyle:{
-            flexDirection: 'row',
-            gap: 20,
-            alignSelf: 'center',
-            alignItems: 'center',
-            backgroundColor: '#3C0753',
-            padding: 10,
-            paddingHorizontal: 30,
-            borderRadius: 20
-        },
-          textStyle: {
-            color: 'white',
-            fontWeight: 'bold',
-            fontSize: 30,
-          }
-    });

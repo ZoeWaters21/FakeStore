@@ -1,21 +1,22 @@
 import { StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { ProductImage } from "../Images/ProductListImage"
+import { ImageDisplay } from "../ProductImage"
+import { pageTitles } from '../../data/Constants';
 
 export const ProductButton = (productInfo) => {
-  console.log("ProductButton received following parameters: ")
+  /*console.log("ProductButton received following parameters: ")
   console.log("ProductID: ", productInfo.productID)
   console.log("ProductTitle: ", productInfo.productTitle)
   console.log("ProductImage: ", productInfo.imageURL)
-  console.log("ProductPrice: ", productInfo.productPrice)
+  console.log("ProductPrice: ", productInfo.productPrice)*/
   const navigation = useNavigation()
   const selectProduct = () =>{
-    navigation.navigate("Product")
+    navigation.navigate("ProductDetails", {productID: productInfo.productID})
   }
 return(
     <View style = {styles.container}>
         <TouchableOpacity style = {{flexDirection: 'row'}} onPress={selectProduct}>
-        <ProductImage productImage = {productInfo.imageURL}/>
+        <ImageDisplay productImage = {{imageURL: productInfo.imageURL, pageTitles: "ProductList"}}/>
           <View style = {styles.textAlign}>
             <Text style = {styles.textStyle}>{productInfo.productTitle}</Text>
             <View style = {{flexDirection: 'row'}}>

@@ -6,7 +6,7 @@ import { CategoryButton } from '../buttons/CategoryButton';
 /* this function takes the data from the database, displays it on the screen, the keyExtractor is
 in there in case it may be needed later, currently doesnt do anything */
 export const CategoryList = (data) => {
-    console.log("CategoryList(data): ", data)
+    //console.log("CategoryList(data): ", data)
 return (
     <View style={styles.container}>
         <FlatList

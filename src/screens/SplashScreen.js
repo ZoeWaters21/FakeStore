@@ -2,14 +2,14 @@ import React from 'react';
 import {ImageBackground, StyleSheet, View} from 'react-native';
 import { useNavigation } from "@react-navigation/native"
 
-const image = {uri: 'https://legacy.reactjs.org/logo-og.png'};
+const image = require('../../assets/SplashArt.png');
 
 export const SplashScreen = () => {
     const navigation = useNavigation()
 
         setTimeout(() => {
             navigation.navigate("Home")
-         }, 2000)
+         }, 3000)
     
 
     return(
