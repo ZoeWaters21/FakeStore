@@ -27,6 +27,6 @@ const styles = StyleSheet.create({
       backgroundColor: '#030637',
       borderBottomColor: '#910A67',
       borderBottomWidth: 2,
-      marginVertical: 10
+      marginTop: 10
     }
 });

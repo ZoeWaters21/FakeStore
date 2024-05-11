@@ -2,9 +2,10 @@ import { URLEncoder } from "../components/Regex";
 
 let productData = {}
 
+const baseURL = 'https://fakestoreapi.com/products/category/'
+
   const getProductListFromAPI = async (category) => {
     try {
-      const baseURL = 'https://fakestoreapi.com/products/category/'
       const fetchData = await fetch(baseURL.concat(URLEncoder(category)));
       const rawData = await fetchData.json();
       //console.log(await "getProductListFromAPI", rawData)
