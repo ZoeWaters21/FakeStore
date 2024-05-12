@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text} from 'react-native';
 import {useEffect} from "react"
-import PageHeader from '../components/PageHeader';
+import PageHeader from '../components/DisplayComponents/PageHeader';
 import {LoadingIndicator} from '../components/LoadingIndicator'
 import {ProductFlatList} from '../components/lists/ProductFlatList'
 import { PreviousPageButton } from "../components/buttons/PreviousScreen"
@@ -38,8 +38,3 @@ export const ProductList = ({route}) => {
   );
 };
 
-//initialises the first flex box, so the rest will be displayed correctly.
-const styles = StyleSheet.create({
-
-
-});

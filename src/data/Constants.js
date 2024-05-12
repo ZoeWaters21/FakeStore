@@ -1,4 +1,4 @@
-export const pageTitles = {Categories: "Categories", Product: "Product Details"}
+export const pageTitles = {Categories: "Categories", Product: "Product Details", ShoppingCart: "Shopping Cart"}
 
 export const imageDimensions = {
     productList: {height:100, width:100},

@@ -2,7 +2,7 @@
 and functions called from scripts in the /src/ folder. */
 import { View} from 'react-native';
 import React, {useState, useEffect} from "react"
-import PageHeader from '../components/PageHeader';
+import PageHeader from '../components/DisplayComponents/PageHeader';
 import { pageTitles } from '../data/Constants';
 import returnCategories, {ClearData} from '../data/CategoryFetch';
 import {LoadingIndicator} from '../components/LoadingIndicator'
@@ -48,5 +48,5 @@ export const Home = () => {
   );
 };
 
-//initialises the first flex box, so the rest will be displayed correctly.
+
 

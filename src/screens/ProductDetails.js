@@ -1,10 +1,10 @@
 import {View} from 'react-native';
 import {useState, useEffect} from "react"
-import PageHeader from '../components/PageHeader';
+import PageHeader from '../components/DisplayComponents/PageHeader';
 import { FetchProductDetails } from '../data/ProductFetch';
 import {LoadingIndicator} from '../components/LoadingIndicator';
 import { pageTitles } from '../data/Constants';
-import  { ProductDisplay } from '../components/ProductDisplay';
+import  { ProductDisplay } from '../components/DisplayComponents/ProductDisplay';
 import { NavBar } from '../components/buttons/NavBar';
 import { ViewportLayoutStyles } from '../StyleSheets/ViewportLayout'
 
@@ -34,3 +34,4 @@ export const ProductDetails = ({route}) => {
     </View>
   );
 };
+

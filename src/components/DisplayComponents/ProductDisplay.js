@@ -1,7 +1,7 @@
 import { StyleSheet, View, Text, ScrollView} from 'react-native';
-import { ImageDisplay } from './ProductImage';
-import { PreviousPageButton } from './buttons/PreviousScreen';
-import { AddProductToCartButton } from './buttons/AddToCartButton';
+import { ImageDisplay } from '../ProductImage';
+import { PreviousPageButton } from '../buttons/PreviousScreen';
+import { AddProductToCartButton } from '../buttons/AddToCartButton';
 import { RatingDisplay } from './RatingDisplay';
 
 export const ProductDisplay = (productInfo) =>{
@@ -17,7 +17,7 @@ return(
         {{rate: productInfo.rating.rate, count: productInfo.rating.count, price: productInfo.price}}/>
         <View style = {styles.buttonContainer}>
             <PreviousPageButton changeSize = {"changeSize"}/>
-            <AddProductToCartButton />
+            <AddProductToCartButton productInfo = {productInfo}/>
         </View>
         <View style = {styles.descriptionContainer}>
             <Text style={styles.textStyle}>{productInfo.description}</Text>

@@ -1,4 +1,4 @@
-  import { CapitalizeFirstLetterEveryWord } from "../components/Regex";
+  import { CapitalizeFirstLetterEveryWord } from "./StringManipulation";
   
 let categoryData = []
 

@@ -1,4 +1,4 @@
-import { URLEncoder } from "../components/Regex";
+import { URLEncoder } from "./StringManipulation";
 
 let productData = {}
 
