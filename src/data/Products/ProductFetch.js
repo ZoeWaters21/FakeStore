@@ -1,4 +1,4 @@
-import { URLEncoder } from "./StringManipulation";
+import { URLEncoder } from "../StringManipulation";
 
 let productData = {}
 

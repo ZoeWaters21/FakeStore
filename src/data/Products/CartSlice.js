@@ -5,7 +5,7 @@ export const cartSlice = createSlice({
     initialState:{
         ItemsList: [],
         TotalItems: 0,
-        TotalCost: 0,
+        TotalCost: 0.00,
     },
     reducers: {
         AddItemToCart: (state, action) => {
@@ -14,11 +14,14 @@ export const cartSlice = createSlice({
                 state.ItemsList.push(NewItemObj)
                 state.TotalItems += 1
                 state.TotalCost += NewItemObj.price
+                state.TotalCost = Math.round(state.TotalCost * 100) / 100
+
             }else{
                 const ind = state.ItemsList.findIndex(x => x.id === action.payload.id)
                 state.ItemsList[ind].count += 1
                 state.TotalItems += 1
                 state.TotalCost += state.ItemsList[ind].price
+                state.TotalCost = Math.round(state.TotalCost * 100) / 100
             }
 
         },
@@ -26,10 +29,12 @@ export const cartSlice = createSlice({
             if (state.ItemsList[action.payload].count <= 1){
                 const removedItem = state.ItemsList.splice(action.payload, 1)
                 state.TotalCost -= removedItem[0].price
+                state.TotalCost = Math.round(state.TotalCost * 100) / 100
                 state.TotalItems -= 1
             }else if(state.ItemsList[action.payload].count >= 1){
                 state.ItemsList[action.payload].count -= 1
                 state.TotalCost -= state.ItemsList[action.payload].price
+                state.TotalCost = Math.round(state.TotalCost * 100) / 100
                 state.TotalItems -= 1
             } else{
                 console.error("DecreaseItemFromCart: index out of range")
@@ -40,6 +45,7 @@ export const cartSlice = createSlice({
             if(action.payload > -1){
                 state.ItemsList[action.payload].count += 1
                 state.TotalCost += state.ItemsList[action.payload].price
+                state.TotalCost = Math.round(state.TotalCost * 100) / 100
                 state.TotalItems += 1
             }else{
                 console.error("increaseItemFromCart: index wasn't found for id")

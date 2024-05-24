@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
-import { AddItemToCart, selectListItems } from '../../data/CartSlice';
+import { AddItemToCart, selectListItems } from '../../data/Products/CartSlice';
 import { useDispatch, useSelector } from "react-redux"
 
 

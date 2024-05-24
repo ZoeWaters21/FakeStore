@@ -4,14 +4,14 @@ import { View} from 'react-native';
 import React, {useState, useEffect} from "react"
 import PageHeader from '../components/DisplayComponents/PageHeader';
 import { pageTitles } from '../data/Constants';
-import returnCategories, {ClearData} from '../data/CategoryFetch';
+import returnCategories, {ClearData} from '../data/Products/CategoryFetch';
 import {LoadingIndicator} from '../components/LoadingIndicator'
 import {CategoryList} from '../components/lists/CategoryList'
 import { NavBar } from '../components/buttons/NavBar';
 import { ViewportLayoutStyles } from '../StyleSheets/ViewportLayout'
 
 //This function calls functions located in other script files to display elements on the page.
-export const Home = () => {
+export const Categories = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true) 
   useEffect(() => {
@@ -42,7 +42,7 @@ export const Home = () => {
         </View>}
       </View>
       <View style ={ViewportLayoutStyles.NavContainer}>
-        <NavBar onCart = {false}/>
+        <NavBar currentPage = 'products'/>
       </View>
     </View>
   );

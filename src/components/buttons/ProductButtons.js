@@ -1,7 +1,6 @@
 import { StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { ImageDisplay } from "../ProductImage"
-import { pageTitles } from '../../data/Constants';
 
 export const ProductButton = (productInfo) => {
   /*console.log("ProductButton received following parameters: ")

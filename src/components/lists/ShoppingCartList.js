@@ -1,6 +1,6 @@
 //This script fills a FlatList element with data from the database, then displays it on the screen. 
 import { StyleSheet, FlatList, View, Text} from 'react-native';
-import { selectListItems, selectTotalCost, selectTotalItems } from "../../data/CartSlice"
+import { selectListItems, selectTotalItems } from "../../data/Products/CartSlice"
 import { useSelector } from "react-redux";
 import { CartItemDisplay } from '../DisplayComponents/CartItemDisplay';
 

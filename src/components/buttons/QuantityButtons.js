@@ -3,7 +3,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import { useDispatch, useSelector } from "react-redux";
 import {decreaseItemFromCart, 
     increaseItemFromCart, 
-    selectListItems} from '../../data/CartSlice'
+    selectListItems} from '../../data/Products/CartSlice'
 
 export const QuantityButtons = (productID) => {
     productID = productID.productID

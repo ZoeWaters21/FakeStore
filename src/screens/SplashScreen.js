@@ -5,19 +5,19 @@ import { useNavigation } from "@react-navigation/native"
 const image = require('../../assets/SplashArt.png');
 
 export const SplashScreen = () => {
-    const navigation = useNavigation()
+  const navigation = useNavigation()
 
-        setTimeout(() => {
-            navigation.navigate("Home")
-         }, 3000)
-    
+  setTimeout(() => {
+    navigation.navigate("CustomerLogin")
+    }, 3000)
+  
 
-    return(
-    < View style={styles.container}>
-        <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-        </ImageBackground>
-    </View>
-    )
+  return(
+  < View style={styles.container}>
+      <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+      </ImageBackground>
+  </View>
+  )
 }
 
 const styles = StyleSheet.create({

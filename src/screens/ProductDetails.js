@@ -1,7 +1,7 @@
 import {View} from 'react-native';
 import {useState, useEffect} from "react"
 import PageHeader from '../components/DisplayComponents/PageHeader';
-import { FetchProductDetails } from '../data/ProductFetch';
+import { FetchProductDetails } from '../data/Products/ProductFetch';
 import {LoadingIndicator} from '../components/LoadingIndicator';
 import { pageTitles } from '../data/Constants';
 import  { ProductDisplay } from '../components/DisplayComponents/ProductDisplay';
@@ -29,7 +29,7 @@ export const ProductDetails = ({route}) => {
         </View>}
       </View>
       <View style ={ViewportLayoutStyles.NavContainer}>
-        <NavBar onCart = {false}/>
+        <NavBar currentPage = 'products'/>
       </View>
     </View>
   );

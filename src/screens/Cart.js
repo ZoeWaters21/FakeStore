@@ -1,6 +1,5 @@
-import { View, Text} from 'react-native';
+import { View } from 'react-native';
 import PageHeader from '../components/DisplayComponents/PageHeader';
-import { LoadingIndicator } from '../components/LoadingIndicator'
 import { NavBar } from '../components/buttons/NavBar';
 import { ViewportLayoutStyles } from '../StyleSheets/ViewportLayout'
 import { pageTitles } from '../data/Constants';
@@ -25,7 +24,7 @@ export const ShoppingCart = () => {
           </View>
       </View>
       <View style ={ViewportLayoutStyles.NavContainer}>
-        <NavBar onCart = {true}/>
+        <NavBar currentPage = 'cart'/>
       </View>
     </View>
   );

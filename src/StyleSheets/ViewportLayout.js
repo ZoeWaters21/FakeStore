@@ -15,8 +15,9 @@ export const ViewportLayoutStyles = StyleSheet.create({
       flex: 1
     },
     ErrorStyle:{
+        textAlign: 'center',
         color:'white',
         marginHorizontal:15,
-        marginVertical: 400
+        marginVertical: 300
       }
 });

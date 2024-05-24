@@ -5,7 +5,7 @@ import {LoadingIndicator} from '../components/LoadingIndicator'
 import {ProductFlatList} from '../components/lists/ProductFlatList'
 import { PreviousPageButton } from "../components/buttons/PreviousScreen"
 import { useDispatch, useSelector } from "react-redux"
-import { loadProductData, selectProduct } from "../data/ProductSlice";
+import { loadProductData, selectProduct } from "../data/Products/ProductSlice";
 import { NavBar } from '../components/buttons/NavBar';
 import { ViewportLayoutStyles } from '../StyleSheets/ViewportLayout'
 
@@ -32,7 +32,7 @@ export const ProductList = ({route}) => {
           </View>)}
       </View>
       <View style ={ViewportLayoutStyles.NavContainer}>
-        <NavBar onCart = {false}/>
+        <NavBar currentPage = 'products'/>
       </View>
     </View>
   );
