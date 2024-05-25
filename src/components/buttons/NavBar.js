@@ -20,9 +20,11 @@ export const NavBar = (currentPage) =>{
     if (pageID === 'login') {
       console.log("current page is the login screen")
       Alert.alert("Not Logged In","You must log in to view this tab")
+      return
     }
     if (pageID === buttonPressed){
       console.log("Already on page")
+      return
     }
   
     if(buttonPressed === 'products'){

@@ -1,13 +1,14 @@
 import { CapitalizeFirstLetterEveryWord } from "../../Functions/StringManipulation";
-  
+import { ServerDomain } from "../Constants";
+
 let categoryData = []
+
+const URLExtension = "/products/categories"
+
 
   const getCategoriesFromAPI = async () => {
     try {
-      const baseURL = 'https://fakestoreapi.com/products/categories'
-      const fetchData = await fetch(
-        baseURL
-      );
+      const fetchData = await fetch(ServerDomain+URLExtension);
       const rawData = await fetchData.json();
       //console.log(await "Rawdata from getCategoriesFromAPI returns: ", rawData)
       return await rawData

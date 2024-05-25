@@ -1,12 +1,11 @@
 import { URLEncoder } from "../../Functions/StringManipulation";
+import { ServerDomain } from "../Constants";
 
 let productData = {}
-
-const baseURL = 'https://fakestoreapi.com/products/category/'
-
+const URLExtension = "/products/category/"
   const getProductListFromAPI = async (category) => {
     try {
-      const fetchData = await fetch(baseURL.concat(URLEncoder(category)));
+      const fetchData = await fetch(ServerDomain + URLExtension + (URLEncoder(category)));
       const rawData = await fetchData.json();
       //console.log(await "getProductListFromAPI", rawData)
       return await rawData
