@@ -1,4 +1,4 @@
-import { URLEncoder } from "../StringManipulation";
+import { URLEncoder } from "../../Functions/StringManipulation";
 
 let productData = {}
 
@@ -15,10 +15,6 @@ const baseURL = 'https://fakestoreapi.com/products/category/'
     }
   };
 
-export const FetchProductDetails = (productID) =>{
-    const productInfoLocation = productData.map(element => element.id).indexOf(productID)
-    return productData[productInfoLocation]
-}
 
 export default async function returnProductList(category){
   productData = await getProductListFromAPI(category)

@@ -3,24 +3,24 @@ import { ImageDisplay } from '../ProductImage';
 import { PreviousPageButton } from '../buttons/PreviousScreen';
 import { AddProductToCartButton } from '../buttons/AddToCartButton';
 import { RatingDisplay } from './RatingDisplay';
+import { selectProduct} from "../../data/Products/ProductSlice";
+import { useSelector } from "react-redux"
 
-export const ProductDisplay = (productInfo) =>{
-    productInfo = productInfo.productInfo
-    //console.log("ProductDisplay received parameter: ", productInfo)
-    //console.log(productInfo.image)
+export const ProductDisplay = () =>{
+    const {slicedData} = useSelector(selectProduct)
+    
 return(
     <View style={styles.container}>
     <ScrollView style={styles.scrollViewContainer}>
-        <ImageDisplay productImage = {{imageURL: productInfo.image, pageTitles: "ProductDetails"}}/>
-        <Text style={styles.titleTextStyle}>{productInfo.title}</Text>
-        <RatingDisplay ratingInfo = 
-        {{rate: productInfo.rating.rate, count: productInfo.rating.count, price: productInfo.price}}/>
+        <ImageDisplay productImage = {{imageURL: slicedData.image, pageTitles: "ProductDetails"}}/>
+        <Text style={styles.titleTextStyle}>{slicedData.title}</Text>
+        <RatingDisplay />
         <View style = {styles.buttonContainer}>
-            <PreviousPageButton changeSize = {"changeSize"}/>
-            <AddProductToCartButton productInfo = {productInfo}/>
+            <PreviousPageButton pageInfo = {{PageName:"ProductDetails", params:{categoryName:slicedData.category}}}/>
+            <AddProductToCartButton productInfo = {slicedData}/>
         </View>
         <View style = {styles.descriptionContainer}>
-            <Text style={styles.textStyle}>{productInfo.description}</Text>
+            <Text style={styles.textStyle}>{slicedData.description}</Text>
         </View>
     </ScrollView> 
     </View>   

@@ -4,8 +4,6 @@ import { selectListItems, selectTotalItems } from "../../data/Products/CartSlice
 import { useSelector } from "react-redux";
 import { CartItemDisplay } from '../DisplayComponents/CartItemDisplay';
 
-/* this function takes the data from the database, displays it on the screen, the keyExtractor is
-in there in case it may be needed later, currently doesnt do anything */
 export const ShoppingCartList = () => {
     const ListItems = useSelector(selectListItems);
     const totalItems = useSelector(selectTotalItems);
@@ -25,8 +23,6 @@ return (
 );
 };
 
-/*Style sheet for this script, container controls the flex box, listItem controls the appearance
-of the listed elements*/
 const styles = StyleSheet.create({
     container: {
       flex: 1,

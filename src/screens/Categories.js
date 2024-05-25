@@ -42,7 +42,7 @@ export const Categories = () => {
         </View>}
       </View>
       <View style ={ViewportLayoutStyles.NavContainer}>
-        <NavBar currentPage = 'products'/>
+        <NavBar currentPage = {{currentPage:'products', navID:'Categories', params:''}}/>
       </View>
     </View>
   );

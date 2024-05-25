@@ -3,24 +3,21 @@ import { useNavigation } from '@react-navigation/native';
 import { ImageDisplay } from "../ProductImage"
 
 export const ProductButton = (productInfo) => {
-  /*console.log("ProductButton received following parameters: ")
-  console.log("ProductID: ", productInfo.productID)
-  console.log("ProductTitle: ", productInfo.productTitle)
-  console.log("ProductImage: ", productInfo.imageURL)
-  console.log("ProductPrice: ", productInfo.productPrice)*/
+  productInfo = productInfo.productData
+  //console.log("Product button recieving params: ", productInfo)
   const navigation = useNavigation()
   const selectProduct = () =>{
-    navigation.navigate("ProductDetails", {productID: productInfo.productID})
+    navigation.navigate("ProductDetails", {productID: productInfo.id, productCategory: productInfo.category})
   }
 return(
     <View style = {styles.container}>
-        <TouchableOpacity style = {{flexDirection: 'row'}} onPress={selectProduct}>
-        <ImageDisplay productImage = {{imageURL: productInfo.imageURL, pageTitles: "ProductList"}}/>
+        <TouchableOpacity style = {{flexDirection: 'row'}} onPress={()=>selectProduct()}>
+        <ImageDisplay productImage = {{imageURL: productInfo.image, pageTitles: "ProductList"}}/>
           <View style = {styles.textAlign}>
-            <Text style = {styles.textStyle}>{productInfo.productTitle}</Text>
+            <Text style = {styles.textStyle}>{productInfo.title}</Text>
             <View style = {{flexDirection: 'row'}}>
               <Text style = {styles.priceText}>Price: </Text>
-              <Text style = {styles.textStyle}>${productInfo.productPrice}</Text>
+              <Text style = {styles.textStyle}>${productInfo.price}</Text>
             </View>
         </View>
         </TouchableOpacity>

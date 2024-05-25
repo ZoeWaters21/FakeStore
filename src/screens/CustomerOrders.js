@@ -17,7 +17,7 @@ export const CustomerOrders = () => {
         </View>
       </View>
       <View style ={ViewportLayoutStyles.NavContainer}>
-        <NavBar currentPage = 'orders'/>
+        <NavBar currentPage = {{currentPage:'orders', navID:'CustomerOrders', params:''}}/>
       </View>
     </View>
   );

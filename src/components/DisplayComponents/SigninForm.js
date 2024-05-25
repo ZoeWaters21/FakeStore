@@ -1,9 +1,9 @@
 import { StyleSheet, View, Text, TextInput} from 'react-native';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-export const TotalDisplay = () =>{
+export const SigninForm= () =>{
     const [inputData, onChangeText] = React.useState({email: '', password: ''});
-
+    
     return(
         <View style = {styles.contentContainer}>
             <View style = {styles.flexedContainer}>

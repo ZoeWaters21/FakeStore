@@ -6,9 +6,11 @@ import { useDispatch, useSelector } from "react-redux"
 
 export const AddProductToCartButton = (productInfo) =>{
   productInfo = productInfo.productInfo
+
   const ListItems = useSelector(selectListItems);
   const dispatch = useDispatch();
   console.log(ListItems)
+  
   const addProductToCart = () =>{
     const indexOfId = ListItems.findIndex(x => x.id === productInfo.id)
     if (indexOfId === -1) {

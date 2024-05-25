@@ -1,9 +1,11 @@
 // src/redux/productSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import returnProductList from "./ProductFetch";
+
 // Define an initial state
 const initialState = {
   productData: {},
+  slicedData: {},
   loading: false,
   error: null,
 };
@@ -27,7 +29,14 @@ export const loadProductData = createAsyncThunk(
 const productSlice = createSlice({
   name: "product",
   initialState,
-  reducers: {},
+  reducers: {
+    findProductByID: (state, action) => {
+      //console.log("running findProductByID, it received", action.payload)
+      const productInfoLocation = state.productData.map(element => element.id).indexOf(action.payload)
+      state.slicedData = state.productData[productInfoLocation]
+      //console.log("slicedData at end of findProductByID function", state.slicedData)
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loadProductData.pending, (state) => {
@@ -46,5 +55,6 @@ const productSlice = createSlice({
       });
   },
 });
+export const {findProductByID} = productSlice.actions
 export const selectProduct = (state) => state.product;
 export default productSlice.reducer;

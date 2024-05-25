@@ -1,4 +1,4 @@
-import { CapitalizeFirstLetterEveryWord } from "../StringManipulation";
+import { CapitalizeFirstLetterEveryWord } from "../../Functions/StringManipulation";
   
 let categoryData = []
 

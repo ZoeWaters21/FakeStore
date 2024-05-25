@@ -13,7 +13,7 @@ import { ViewportLayoutStyles } from '../StyleSheets/ViewportLayout'
 export const ProductList = ({route}) => {
   const category = route.params.categoryName
   const dispatch = useDispatch();
-  const { productData, loading, error } = useSelector(selectProduct);
+  const { loading, error } = useSelector(selectProduct);
   //console.log("the route value is: ", route.params.categoryName, category)
   
   useEffect(() => {
@@ -27,12 +27,12 @@ export const ProductList = ({route}) => {
         error ? ( <Text style ={ViewportLayoutStyles.ErrorStyle}>Error: {error}</Text> ) :
           (<View style ={ViewportLayoutStyles.flexedContainer}>
             <PageHeader headerText = {category}/>
-            <ProductFlatList data = {productData}/>
-            <PreviousPageButton/>
+            <ProductFlatList />
+            <PreviousPageButton pageInfo = {{PageName:"ProductList"}}/>
           </View>)}
       </View>
       <View style ={ViewportLayoutStyles.NavContainer}>
-        <NavBar currentPage = 'products'/>
+        <NavBar currentPage = {{currentPage:'products', navID:'ProductList', params:category}} />
       </View>
     </View>
   );

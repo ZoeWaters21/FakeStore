@@ -24,7 +24,7 @@ export const ShoppingCart = () => {
           </View>
       </View>
       <View style ={ViewportLayoutStyles.NavContainer}>
-        <NavBar currentPage = 'cart'/>
+        <NavBar currentPage = {{currentPage:'cart', navID:'ShoppingCart', params:''}}/>
       </View>
     </View>
   );
