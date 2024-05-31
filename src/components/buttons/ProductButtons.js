@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { ImageDisplay } from "../ProductImage"
 
 export const ProductButton = (productInfo) => {
-  productInfo = productInfo.productData
+  productInfo = productInfo.productList
   //console.log("Product button recieving params: ", productInfo)
   const navigation = useNavigation()
   const selectProduct = () =>{

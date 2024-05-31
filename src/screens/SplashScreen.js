@@ -8,7 +8,7 @@ export const SplashScreen = () => {
   const navigation = useNavigation()
 
   setTimeout(() => {
-    navigation.navigate("Categories")
+    navigation.navigate("CustomerLogin")
     }, 3000)
   
 

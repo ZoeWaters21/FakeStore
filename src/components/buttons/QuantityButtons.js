@@ -3,22 +3,38 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import { useDispatch, useSelector } from "react-redux";
 import {decreaseItemFromCart, 
     increaseItemFromCart, 
-    selectListItems} from '../../data/Products/CartSlice'
+    selectCart, 
+    UploadCartToServer} from '../../data/Products/CartSlice'
+import { selectCustomer } from '../../data/Users/CustomerSlice';
+import { ReduceDataForCart } from '../../Functions/ProductFunctions';
 
 export const QuantityButtons = (productID) => {
     productID = productID.productID
-    const ListItems = useSelector(selectListItems);
+    const {CartItems} = useSelector(selectCart);
+    const {customerData} = useSelector(selectCustomer)
+
     const dispatch = useDispatch();
-    const ind = ListItems.findIndex(x => x.id === productID)
+    const index = CartItems.findIndex(x => x.id === productID)
+
+    const decreaseQuantity = (index) =>{
+        dispatch(decreaseItemFromCart(index))
+        dispatch(UploadCartToServer({token:customerData.token, items:ReduceDataForCart(CartItems)}))
+    }
+    const increaseQuantity = (index) =>{
+        dispatch(increaseItemFromCart(index))
+        dispatch(UploadCartToServer({token:customerData.token, items:ReduceDataForCart(CartItems)}))
+    }
+
+    
     return(
         <View style = {styles.container}>
-            <TouchableOpacity onPress={()=> dispatch(decreaseItemFromCart(ind))}>
+            <TouchableOpacity onPress={()=> decreaseQuantity(index)}>
             <Icon name="minuscircle" size={25} color="white" />
             </TouchableOpacity>
             <View>
-                <Text style = {styles.textStyle}>Quantity: {ListItems[ind].count}</Text>
+                {CartItems && <Text style = {styles.textStyle}>Quantity: {CartItems[index].count}</Text>}
             </View>
-            <TouchableOpacity onPress={()=> dispatch(increaseItemFromCart(ind))}>
+            <TouchableOpacity onPress={()=> increaseQuantity(index)}>
             <Icon name="pluscircle" size={25} color="white" />
             </TouchableOpacity>
         </View>

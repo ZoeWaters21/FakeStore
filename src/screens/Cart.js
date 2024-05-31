@@ -5,6 +5,7 @@ import { ViewportLayoutStyles } from '../StyleSheets/ViewportLayout'
 import { pageTitles } from '../data/Constants';
 import { ShoppingCartList } from '../components/lists/ShoppingCartList';
 import { TotalDisplay } from '../components/DisplayComponents/TotalDisplay';
+import { CheckOutButton } from '../components/buttons/CheckOutButton';
 
 
 export const ShoppingCart = () => {
@@ -16,11 +17,14 @@ export const ShoppingCart = () => {
           <View style ={{flex:4}}>
             <PageHeader headerText = {pageTitles.ShoppingCart}/>
           </View>
+          <View style ={{flex:2}}>
+            <TotalDisplay />
+          </View>
           <View style ={{flex:20}}>
             <ShoppingCartList  />
           </View>
-          <View style ={{flex:2}}>
-            <TotalDisplay />
+          <View style ={{flex:2, marginTop:10}}>
+            <CheckOutButton />
           </View>
       </View>
       <View style ={ViewportLayoutStyles.NavContainer}>

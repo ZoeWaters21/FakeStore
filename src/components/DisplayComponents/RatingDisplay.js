@@ -1,40 +1,38 @@
 import { StyleSheet, View, Text,} from 'react-native';
-import { selectProduct} from "../../data/Products/ProductSlice";
-import { useSelector } from "react-redux"
 import {useState, useEffect} from 'react';
 
-export const RatingDisplay = () =>{
+export const RatingDisplay = (productInfo) =>{
+    productInfo = productInfo.productInfo
+    //console.log("rating display receiving: ", productInfo)
     const [loading, SetLoading] = useState(true)
 
-    const {slicedData} = useSelector(selectProduct)
-
     const checkIfLoaded = () => {
-        if (Object.keys(slicedData).length != 0){
+        if (productInfo.length != 0){
             SetLoading(false)
+            //console.log("categoryList returning: ",categories)
         }
     }
-
-    useEffect(() => {
-        if (loading){
-            checkIfLoaded()
-        }
+useEffect(() => {
+    if (loading){
+        checkIfLoaded()
     }
-    ,[])
+  }
+,[])
 
 return(
     <View>
         {!loading && <View style={styles.middleContainer}>
             <View style={styles.middleContainerAlignment}>
                 <Text style={[styles.textStyle, {fontWeight:'bold'}]}>Rate: </Text>
-                <Text style={styles.textStyle}>{slicedData.rating.rate}</Text> 
+                <Text style={styles.textStyle}>{productInfo.rating.rate}</Text> 
             </View>
             <View style={styles.middleContainerAlignment}>
                 <Text style={[styles.textStyle, {fontWeight:'bold'}]}>Sales: </Text> 
-                <Text style={styles.textStyle}>{slicedData.rating.count}</Text> 
+                <Text style={styles.textStyle}>{productInfo.rating.count}</Text> 
             </View>
             <View style={styles.middleContainerAlignment}>
                 <Text style={[styles.textStyle, {fontWeight:'bold'}]}>Price: </Text>
-                <Text style={styles.textStyle}>${slicedData.price} </Text> 
+                <Text style={styles.textStyle}>${productInfo.price} </Text> 
             </View>  
         </View>}
     </View>

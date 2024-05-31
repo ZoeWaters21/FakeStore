@@ -1,10 +1,9 @@
 import { StyleSheet, View, Text} from 'react-native';
 import { useSelector } from "react-redux"
-import { selectTotalItems, selectTotalCost } from "../../data/Products/CartSlice"
+import { selectCart } from "../../data/Products/CartSlice"
 
 export const TotalDisplay = () =>{
-    const TotalItems = useSelector(selectTotalItems)
-    const TotalCost = useSelector(selectTotalCost)
+    const {TotalItems, TotalCost} = useSelector(selectCart)
 
     return(
         <View style = {styles.container}>

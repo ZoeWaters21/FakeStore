@@ -1,4 +1,4 @@
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 import PageHeader from '../components/DisplayComponents/PageHeader';
 import { useEffect } from "react"
 import { pageTitles } from '../data/Constants';
@@ -6,35 +6,51 @@ import {LoadingIndicator} from '../components/LoadingIndicator';
 import  { ProductDisplay } from '../components/DisplayComponents/ProductDisplay';
 import { NavBar } from '../components/buttons/NavBar';
 import { ViewportLayoutStyles } from '../StyleSheets/ViewportLayout'
-import { loadProductData, selectProduct, findProductByID } from "../data/Products/ProductSlice";
+import { selectProduct, loadProductDetails , fetchCachedProductDetails} from "../data/Products/ProductSlice";
 import { useDispatch, useSelector } from "react-redux"
 
 export const ProductDetails = ({route}) => {
   const productID = route.params.productID
-  const category = route.params.productCategory
+  
 
   const dispatch = useDispatch();
-  const { loading, error } = useSelector(selectProduct);
+  const { currentProductDetails, cachedProductDetails,loading, error } = useSelector(selectProduct);
 
   useEffect(() => {
-    dispatch(loadProductData(category))
-    dispatch(findProductByID(productID))
-  }
-
-,[])
+    
+    if(cachedProductDetails.length != 0){
+      let noCache = true
+      cachedProductDetails.forEach(item=> {
+        //console.log("checking each comparsion: ", "stored: ", item.ProductID, "Received: ", productID)
+        if (item.ProductID === productID){
+          dispatch(fetchCachedProductDetails(item.data))
+          noCache = false       
+      }})
+      if(noCache){ dispatch(loadProductDetails(productID))}
+    }else{      
+      console.log("no cache found")
+      dispatch(loadProductDetails(productID))
+    }
+  } 
+  ,[])
 
   return (
     <View style ={ViewportLayoutStyles.PageContainer}>
+      <View style ={ViewportLayoutStyles.HeaderContainer}>
+      <PageHeader headerText = {pageTitles.Product}/>
+      </View>
       <View style ={ViewportLayoutStyles.ContentContainer}>
-      {loading ? (<LoadingIndicator/> ):
+      {loading ?
+        <View style ={ViewportLayoutStyles.flexedContainer}>
+          <LoadingIndicator/> 
+        </View> :
         error ? ( <Text style ={ViewportLayoutStyles.ErrorStyle}>Error: {error}</Text> ) :
           (<View style ={ViewportLayoutStyles.flexedContainer}>
-            <PageHeader headerText = {pageTitles.Product}/>
-            <ProductDisplay />
+            <ProductDisplay ProductInfo = {currentProductDetails}/>
           </View>)}
-        </View>
+      </View>
       <View style ={ViewportLayoutStyles.NavContainer}>
-        <NavBar currentPage = {{currentPage:'products', navID:'ProductDetails', params:{productID:productID, productCategory:category}}} />
+        <NavBar currentPage = {{currentPage:'products', navID:'ProductDetails', params:{productID:productID}}} />
       </View>
     </View>
   );

@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 export const CategoryButton = (categoryName) => {
   const navigation = useNavigation()
   categoryName = categoryName.categoryName
+  //console.log("category button returning", categoryName)
   const selectCategory = () =>{
     navigation.navigate("ProductList", {categoryName: categoryName})
   }

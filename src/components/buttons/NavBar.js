@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Entypo';
 import Icon2 from 'react-native-vector-icons/FontAwesome';
 import { useSelector } from "react-redux"
-import { selectTotalItems } from '../../data//Products/CartSlice';
+import { selectCart } from '../../data//Products/CartSlice';
 
 let lastProductScreen = []
 
@@ -13,17 +13,17 @@ export const NavBar = (currentPage) =>{
   const pageID = pageInfo.currentPage
 
   const navigation = useNavigation()
-  const totalItems = useSelector(selectTotalItems) 
-
+  const { TotalItems }  = useSelector(selectCart) 
+  //console.log(totalItems)
   NavBarNavigation = (buttonPressed) =>{
     //console.log("buttonpressed : ", buttonPressed )
     if (pageID === 'login') {
-      console.log("current page is the login screen")
+      //console.log("current page is the login screen")
       Alert.alert("Not Logged In","You must log in to view this tab")
       return
     }
     if (pageID === buttonPressed){
-      console.log("Already on page")
+      //console.log("Already on page")
       return
     }
   
@@ -51,8 +51,8 @@ export const NavBar = (currentPage) =>{
             <TouchableOpacity style = {styles.buttonStyle} onPress={() => NavBarNavigation('cart')}>
                 <Icon name="shopping-cart" size={30} color= {pageID === 'cart' ? "blue" : "lightgrey"} />
                 <Text style = {[styles.textStyle, pageID === 'cart' ? {color: "blue"} : {color: "lightgrey"}]}>My Cart </Text>
-                {totalItems != 0 && <View style = {styles.Redcircle}>
-                  <Text style = {styles.counterNumberStyle}>{totalItems}</Text>
+                {TotalItems != 0 && TotalItems && <View style = {styles.Redcircle}>
+                  <Text style = {styles.counterNumberStyle}>{TotalItems}</Text>
                 </View >}
             </TouchableOpacity>
             <TouchableOpacity style = {styles.buttonStyle} onPress={() => NavBarNavigation('orders')}>
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     borderRadius: 20/2,
     backgroundColor:'red',
     position: 'absolute',
-    right: "50%"
+    right: "35%"
   },
   counterNumberStyle:{
     textAlign: 'center',

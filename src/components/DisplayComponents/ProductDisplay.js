@@ -3,26 +3,41 @@ import { ImageDisplay } from '../ProductImage';
 import { PreviousPageButton } from '../buttons/PreviousScreen';
 import { AddProductToCartButton } from '../buttons/AddToCartButton';
 import { RatingDisplay } from './RatingDisplay';
-import { selectProduct} from "../../data/Products/ProductSlice";
-import { useSelector } from "react-redux"
+import { useEffect, useState } from 'react';
+import { CapitalizeFirstLetterEveryWord } from '../../Functions/StringManipulation';
 
-export const ProductDisplay = () =>{
-    const {slicedData} = useSelector(selectProduct)
+export const ProductDisplay = (productInfo) =>{
+    productInfo = productInfo.ProductInfo
+    //console.log("product display receiving: ", productInfo)
+    const [loading, SetLoading] = useState(true)
+
+    const checkIfLoaded = () => {
+        if (productInfo.length != 0){
+            SetLoading(false)
+            //console.log("categoryList returning: ",categories)
+        }
+    }
+useEffect(() => {
+    if (loading){
+        checkIfLoaded()
+    }
+  }
+,[])
     
 return(
     <View style={styles.container}>
-    <ScrollView style={styles.scrollViewContainer}>
-        <ImageDisplay productImage = {{imageURL: slicedData.image, pageTitles: "ProductDetails"}}/>
-        <Text style={styles.titleTextStyle}>{slicedData.title}</Text>
-        <RatingDisplay />
+    {!loading && <ScrollView style={styles.scrollViewContainer}>
+        <ImageDisplay productImage = {{imageURL: productInfo.image, pageTitles: "ProductDetails"}}/>
+        <Text style={styles.titleTextStyle}>{productInfo.title}</Text>
+        <RatingDisplay productInfo = {productInfo}/>
         <View style = {styles.buttonContainer}>
-            <PreviousPageButton pageInfo = {{PageName:"ProductDetails", params:{categoryName:slicedData.category}}}/>
-            <AddProductToCartButton productInfo = {slicedData}/>
+            <PreviousPageButton pageInfo = {{PageName:"ProductDetails", params:{categoryName:productInfo.category}}}/>
+            <AddProductToCartButton productInfo = {productInfo}/>
         </View>
         <View style = {styles.descriptionContainer}>
-            <Text style={styles.textStyle}>{slicedData.description}</Text>
+            <Text style={styles.textStyle}>{productInfo.description}</Text>
         </View>
-    </ScrollView> 
+    </ScrollView>}
     </View>   
 );
 

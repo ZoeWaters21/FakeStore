@@ -8,6 +8,9 @@ export const ViewportLayoutStyles = StyleSheet.create({
     ContentContainer:{
       flex:30
     },
+    HeaderContainer:{
+      flex:5
+    },
     NavContainer:{
       flex:3
     },
